@@ -12,32 +12,6 @@ sudos   = dofile("sudo.lua")
 bot_id  = token:match("(%d+)")  
 Id_Sudo = Sudo
 List_Sudos = {Id_Sudo,970017493,665877797}
-User = io.popen("whoami"):read('*a')
-IP = io.popen("dig +short myip.opendns.com @resolver1.opendns.com"):read('*a')
-name = io.popen("uname -a | awk '{ name = $2 } END { print name }'"):read('*a')
-port = io.popen("echo ${SSH_CLIENT} | awk '{ port = $3 } END { print port }'"):read('*a')
-Rtime = io.popen("date +'%Y-%m-%d %T'"):read('*a')
-print("\27[34m"..[[
->> Best Source in Telegram
->> Features fast and powerful
- ____  _        _    ____ _  __
-| __ )| |      / \  / ___| |/ /
-|  _ \| |     / _ \| |   | ' / 
-| |_) | |___ / ___ \ |___| . \ 
-|____/|_____/_/   \_\____|_|\_\
-
-Installation information
-
-User :: ]]..User..[[
-
-IP :: ]]..IP..[[
-
-name :: ]]..name..[[
-
-port :: ]]..port..[[
-
-time ::]]..Rtime.."\27[m")
-
 io.popen("mkdir Spyder_Files")
 t = "\27[35m".."\nAll Files Started : \n____________________\n"..'\27[m'
 i = 0
