@@ -2,14 +2,13 @@
 cd $HOME/Spyder
 rm -rf $HOME/.telegram-cli
 install() {
-rm -rf $HOME/.telegram-cli
 sudo chmod +x tg
 chmod +x Spyder
-chmod +x ts
-./ts
+chmod +x tk
+./tk
 }
 if [ "$1" = "ins" ]; then
-install
+ins
 fi
-chmod +x install.sh
+chmod +x ins.sh
 lua start.lua
