@@ -71,7 +71,7 @@ RunSpyder:write([[
 cd $HOME/Spyder
 token="]]..database:get(Server_Spyder.."Token_Spyder")..[["
 rm -fr Spyder.lua
-wget "https://raw.githubusercontent.com/Spyder-Team/Spyder/main/Spyder.lua"
+wget "https://raw.githubusercontent.com/Tubaktele/Spyder/master/Spyder.lua"
 while(true) do
 rm -fr ../.telegram-cli
 ./tg -s ./Spyder.lua -p PROFILE --bot=$token
