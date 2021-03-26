@@ -3,19 +3,19 @@ https = require("ssl.https")
 http = require("socket.http")
 JSON = dofile("./File_Libs/JSON.lua")
 local database = dofile("./File_Libs/redis.lua").connect("127.0.0.1", 6379)
-Server_TeKToK = io.popen("echo $SSH_CLIENT | awk '{ print $1}'"):read('*a')
-local AutoFiles_TeKToK = function() 
+Server_Spyder = io.popen("echo $SSH_CLIENT | awk '{ print $1}'"):read('*a')
+local AutoFiles_Spyder = function() 
 local Create_Info = function(Token,Sudo,UserName)  
-local TeKToK_Info_Sudo = io.open("sudo.lua", 'w')
-TeKToK_Info_Sudo:write([[
+local Spyder_Info_Sudo = io.open("sudo.lua", 'w')
+Spyder_Info_Sudo:write([[
 token = "]]..Token..[["
 
 Sudo = ]]..Sudo..[[  
 
 ]])
-TeKToK_Info_Sudo:close()
+Spyder_Info_Sudo:close()
 end  
-if not database:get(Server_TeKToK.."Token_TeKToK") then
+if not database:get(Server_Spyder.."Token_Spyder") then
 print("\27[1;34m»» Send Your Token Bot :\27[m")
 local token = io.read()
 if token ~= '' then
@@ -24,7 +24,7 @@ if res ~= 200 then
 io.write('\n\27[1;31m»» Sorry The Token is not Correct \n\27[0;39;49m')
 else
 io.write('\n\27[1;31m»» The Token Is Saved\n\27[0;39;49m')
-database:set(Server_TeKToK.."Token_TeKToK",token)
+database:set(Server_Spyder.."Token_Spyder",token)
 end 
 else
 io.write('\n\27[1;31mThe Tokem was not Saved\n\27[0;39;49m')
@@ -33,57 +33,57 @@ os.execute('lua start.lua')
 end
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
-if not database:get(Server_TeKToK.."Id_TeKToK") then
+if not database:get(Server_Spyder.."Id_Spyder") then
 print("\27[1;34m\n»» Send Your id Sudo : \27[m")
 local UserName = io.read():gsub('@','')
 if UserName ~= '' then
 io.write('\n\27[1;31m»» The id Is Saved\n\27[0;39;49m')
-database:set(Server_TeKToK.."Id_TeKToK",UserName)
+database:set(Server_Spyder.."Id_Spyder",UserName)
 else
 io.write('\n\27[1;31mThe id was not Saved\n\27[0;39;49m')
 end 
 os.execute('lua start.lua')
 end
-local function Files_TeKToK_Info()
-Create_Info(database:get(Server_TeKToK.."Token_TeKToK"),database:get(Server_TeKToK.."Id_TeKToK"),database:get(Server_TeKToK.."UserName_TeKToK"))   
-local RunTeKToK = io.open("TeKToK", 'w')
-RunTeKToK:write([[
+local function Files_Spyder_Info()
+Create_Info(database:get(Server_Spyder.."Token_Spyder"),database:get(Server_Spyder.."Id_Spyder"),database:get(Server_Spyder.."UserName_Spyder"))   
+local RunSpyder = io.open("Spyder", 'w')
+RunSpyder:write([[
 #!/usr/bin/env bash
-cd $HOME/TeKToK
-token="]]..database:get(Server_TeKToK.."Token_TeKToK")..[["
-rm -fr TeKToK.lua
+cd $HOME/Spyder
+token="]]..database:get(Server_Spyder.."Token_Spyder")..[["
+rm -fr Spyder.lua
 wget "https://raw.githubusercontent.com/Tubaktele/Spyder/main/Spyder.lua"
 while(true) do
 rm -fr ../.telegram-cli
-./tg -s ./TeKToK.lua -p PROFILE --bot=$token
+./tg -s ./Spyder.lua -p PROFILE --bot=$token
 done
 ]])
-RunTeKToK:close()
+RunSpyder:close()
 local RunTs = io.open("tk", 'w')
 RunTs:write([[
 #!/usr/bin/env bash
-cd $HOME/TeKToK
+cd $HOME/Spyder
 while(true) do
 rm -fr ../.telegram-cli
-screen -S TeKToK -X kill
-screen -S TeKToK ./TeKToK
+screen -S Spyder -X kill
+screen -S Spyder ./Spyder
 done
 ]])
 RunTs:close()
 end
-Files_TeKToK_Info()
-database:del(Server_TeKToK.."Token_TeKToK");database:del(Server_TeKToK.."Id_TeKToK");database:del(Server_TeKToK.."UserName_TeKToK")
+Files_Spyder_Info()
+database:del(Server_Spyder.."Token_Spyder");database:del(Server_Spyder.."Id_Spyder");database:del(Server_Spyder.."UserName_Spyder")
 sudos = dofile('sudo.lua')
 os.execute('./install.sh ins')
 end 
 local function Load_File()  
 local f = io.open("./sudo.lua", "r")  
 if not f then   
-AutoFiles_TeKToK()  
+AutoFiles_Spyder()  
 var = true
 else   
 f:close()  
-database:del(Server_TeKToK.."Token_TeKToK");database:del(Server_TeKToK.."Id_TeKToK");database:del(Server_TeKToK.."UserName_TeKToK")
+database:del(Server_Spyder.."Token_Spyder");database:del(Server_Spyder.."Id_Spyder");database:del(Server_Spyder.."UserName_Spyder")
 sudos = dofile('sudo.lua')
 os.execute('./install.sh ins')
 var = false
