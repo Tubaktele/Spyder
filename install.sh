@@ -13,7 +13,7 @@ rm -fr sudo.lua
 wget "https://raw.githubusercontent.com/Tubaktele/Spyder/main/Spyder.lua"
 lua start.lua
 }
-installall(){
+ins_sudo(){
 apt update
 apt upgrade
 sudo apt-get update
@@ -44,7 +44,7 @@ fi
 if [ "$1" = "get" ]; then
 get
 fi
-installall
+ins_sudo
 cd ..
 rm -rf luarocks*
 cd Spyder
