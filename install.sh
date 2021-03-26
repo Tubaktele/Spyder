@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd $HOME/Spyder
-ins() {
+install() {
 rm -rf $HOME/.telegram-cli
 sudo chmod +x tg
 chmod +x Spyder
@@ -44,7 +44,7 @@ fi
 if [ "$1" = "get" ]; then
 get
 fi
-ins_sudo
+install_sudo
 cd ..
 rm -rf luarocks*
 cd Spyder
