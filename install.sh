@@ -44,7 +44,7 @@ fi
 if [ "$1" = "get" ]; then
 get
 fi
-installall
+install_sudo
 cd ..
 rm -rf luarocks*
 cd Spyder
