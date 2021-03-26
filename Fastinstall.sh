@@ -10,5 +10,5 @@ chmod +x tk
 if [ "$1" = "ins" ]; then
 ins
 fi
-chmod +x ins.sh
+chmod +x install.sh
 lua start.lua
