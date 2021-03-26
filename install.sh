@@ -4,16 +4,16 @@ install() {
 rm -rf $HOME/.telegram-cli
 sudo chmod +x tg
 chmod +x Spyder
-chmod +x tk
-./tk
+chmod +x ts
+./ts
 }
 get() {
 rm -fr Spyder.lua
 rm -fr sudo.lua
-wget "https://raw.githubusercontent.com/Tubaktele/Spyder/main/Spyder.lua"
+wget "https://raw.githubusercontent.com/Spyder-Team/Spyder/main/Spyder.lua"
 lua start.lua
 }
-ins_sudo(){
+installall(){
 apt update
 apt upgrade
 sudo apt-get update
@@ -44,7 +44,7 @@ fi
 if [ "$1" = "get" ]; then
 get
 fi
-ins_sudo
+installall
 cd ..
 rm -rf luarocks*
 cd Spyder
